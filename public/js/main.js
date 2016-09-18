@@ -16,10 +16,12 @@ todoApp.controller('todoController', function($scope, todoFactory) {
   };
 
   $scope.createTodo = function() {
+    console.log($scope.formData);
     return todoFactory.createTodo($scope.formData)
     .then(function(todo) {
       $scope.todos.push(todo);
       $scope.formData.text = '';
+      $scope.formData.title = '';
     });
   };
 
