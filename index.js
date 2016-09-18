@@ -14,10 +14,12 @@ app.use(bodyParser.json());                                     // parse applica
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
 app.use(methodOverride());
 
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendfile('./public/index.html');
 })
 
+app.use('/api', require('./server/routes'));
+
 app.listen(3000, function() {
-    console.log('Now listening on port 3000')
+    console.log('Now listening on port 3000');
 });
